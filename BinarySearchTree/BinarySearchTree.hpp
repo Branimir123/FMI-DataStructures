@@ -7,21 +7,25 @@ template <class T>
 class BinarySearchTree 
 {   
 public:
+    // Big Four
     BinarySearchTree() : _root(nullptr), _size(0) {}; 
     BinarySearchTree(const BinarySearchTree& other);
     ~BinarySearchTree();
     BinarySearchTree& operator=(const BinarySearchTree& other);
     
+    // Main Operations
     void Insert(const T& key) { _Insert(_root, key); _size++; }
     void Remove(const T& key) { _Remove(_root, key); }
     bool Find(const T& key) { return _Find(_root, key); }
 
+    // Constant Functions Not Changing The Tree
     size_t GetSize() const { return _size; }
     size_t GetHeight() const { return (size_t)_Height(_root); }
 
     bool IsBalanced() const { return _Balanced(_root); }
     bool IsPerfectlyBalanced() const { return _PerfectBalanced(_root); }
-
+    
+    // This Function Used To Print The Tree In Order
     void PrintInOrder() const { return _Print(_root); }
 
 private:
